@@ -2,9 +2,14 @@ function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
 }
 function onDeviceReady() {
+    document.addEventListener("offline", onOffline, false);
     var db = openDatabase('budget', '1.0', 'budget', 1024*1024);
     db.transaction(populateDB, failed, success);
     db.transaction(successDB, failed, success);
+}
+function onOffline() {
+    alert("No internet. Check connection and restart the app.");
+    navigator.app.exitApp();
 }
 function populateDB(tx) {
     tx.executeSql("CREATE TABLE IF NOT EXISTS members (id INTEGER PRIMARY KEY, email VARCHAR, password VARCHAR, login CHAR)");
