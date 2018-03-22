@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    </head>
+    <body onload="onLoad();">
+        <div class="index">
+            <img src="img/logo.png"/>
+            <br/>
+            <input class="field" id="email" type="email" placeholder="Email Id / Mobile" />
+            <br/>
+            <input class="field" id="password" type="password" placeholder="Password" />
+            <br/>
+            <button class="button" id="login">Login</button>
+            <div class="register">
+                <a href="https://khuranatech.in/pro/budget/?frgt=yes">Forgot Password?</a>
+            </div>
+            <div class="register">
+                <i>Not a member?</i> <a href="https://khuranatech.in/pro/budget/#register">Register</a>
+            </div>
+        </div>
+        <div class="cpanel">
+            <div class="siteinfo">
+                <div class="title">kTech My Budget</div>
+                <div class="menuicon"><img src="img/menuicon.png"/></div>
+            </div>
+            <div class="menu">
+                <div class="name"></div>
+                <a class="daslink">Dashboard</a>
+                <a class="inclink">Income</a>
+                <a class="explink">Expenses</a>
+                <a class="analink">Analytics</a>
+                <a class="logout">Logout</a>
+                <a href="https://khuranatech.in/">About kTech</a>
+            </div>
+            <div class="menuexit"></div>
+            <div class="content">
+                <div class="dashboard contdiv">
+                    <h3>Last 10 transactions</h3>
+                    <div class="dashth">
+                        <div class="date th">Date</div>
+                        <div class="type th">Type</div>
+                        <div class="remarks th">Remarks</div>
+                        <div class="amount th">Amount</div>
+                    </div>
+                    <div id="last5"></div>
+                </div>
+                <div class="income contdiv">
+                    <h3>
+                        Income of
+                        <select class="incmon">
+                            <option value='0'>Month</option>
+                            <option value='01'>Jan</option>
+                            <option value='02'>Feb</option>
+                            <option value='03'>Mar</option>
+                            <option value='04'>Apr</option>
+                            <option value='05'>May</option>
+                            <option value='06'>Jun</option>
+                            <option value='07'>Jul</option>
+                            <option value='08'>Aug</option>
+                            <option value='09'>Sep</option>
+                            <option value='10'>Oct</option>
+                            <option value='11'>Nov</option>
+                            <option value='12'>Dec</option>
+                        </select>
+                        <select class="incyea">
+                            <option value='0'>Year</option>
+                            <option value='2018'>2018</option>
+                            <option value='2017'>2017</option>
+                            <option value='2016'>2016</option>
+                            <option value='2015'>2015</option>
+                            <option value='2014'>2014</option>
+                            <option value='2013'>2013</option>
+                            <option value='2012'>2012</option>
+                            <option value='2011'>2011</option>
+                        </select>
+                        <input type="button" onclick="income();" value="Go"/>
+                    </h3>
+                    <div class="dashth">
+                        <div class="date th">Date</div>
+                        <div class="remarks th">Remarks</div>
+                        <div class="amount th">Amount</div>
+                    </div>
+                    <div id="income"></div>
+                    <div class="incadd addnew"><img src="img/add.png"/></div>
+                </div>
+                <div class="expenses contdiv">
+                    <h3>
+                        Expenses of
+                        <select class="expmon">
+                            <option value='0'>Month</option>
+                            <option value='01'>Jan</option>
+                            <option value='02'>Feb</option>
+                            <option value='03'>Mar</option>
+                            <option value='04'>Apr</option>
+                            <option value='05'>May</option>
+                            <option value='06'>Jun</option>
+                            <option value='07'>Jul</option>
+                            <option value='08'>Aug</option>
+                            <option value='09'>Sep</option>
+                            <option value='10'>Oct</option>
+                            <option value='11'>Nov</option>
+                            <option value='12'>Dec</option>
+                        </select>
+                        <select class="expyea">
+                            <option value='0'>Year</option>
+                            <option value='2018'>2018</option>
+                            <option value='2017'>2017</option>
+                            <option value='2016'>2016</option>
+                            <option value='2015'>2015</option>
+                            <option value='2014'>2014</option>
+                            <option value='2013'>2013</option>
+                            <option value='2012'>2012</option>
+                            <option value='2011'>2011</option>
+                        </select>
+                        <input type="button" onclick="expenses();" value="Go"/>
+                    </h3>
+                    <div class="dashth">
+                        <div class="date th">Date</div>
+                        <div class="remarks th">Remarks</div>
+                        <div class="amount th">Amount</div>
+                    </div>
+                    <div id="expenses"></div>
+                    <div class="expadd addnew"><img src="img/add.png"/></div>
+                </div>
+                <div class="analytics contdiv">
+                    <h3>Analytics</h3>
+                    <div class="dashth">
+                        <div class="blank th">blank</div>
+                        <div class="my1 th">_</div>
+                        <div class="my2 th">_</div>
+                        <div class="my3 th">_</div>
+                    </div>
+                    <div id="analytics">
+                        <div class="overflow">
+                            <div class="inclab aninc">Income</div>
+                            <div class="inc1 aninc"></div>
+                            <div class="inc2 aninc"></div>
+                            <div class="inc3 aninc"></div>
+                        </div>
+                        <div class="overflow">
+                            <div class="explab aninc">Expenses</div>
+                            <div class="exp1 aninc"></div>
+                            <div class="exp2 aninc"></div>
+                            <div class="exp3 aninc"></div>
+                        </div>
+                        <hr/>
+                        <div class="overflow">
+                            <div class="savlab aninc">Savings</div>
+                            <div class="sav1 aninc"></div>
+                            <div class="sav2 aninc"></div>
+                            <div class="sav3 aninc"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="newinc newform">
+                    <h3>New Income</h3>
+                    <br/>
+                    Date
+                    <br/>
+                    <input class="field" id="incdate" type="date"/>
+                    <br/>
+                    Amount (&#8377;)
+                    <br/>
+                    <input class="field" id="incamount" type="number"/>
+                    <br/>
+                    Remarks (optional)
+                    <br/>
+                    <textarea class="field" id="incremarks"></textarea>
+                    <br/>
+                    <button class="button" id="incsubmit">Submit</button>
+                    <br/>
+                    <a class="incclose">Close</a>
+                </div>
+                <div class="newexp newform">
+                    <h3>New Expense</h3>
+                    <br/>
+                    Date
+                    <br/>
+                    <input class="field" id="expdate" type="date"/>
+                    <br/>
+                    Amount (&#8377;)
+                    <br/>
+                    <input class="field" id="expamount" type="number"/>
+                    <br/>
+                    Category
+                    <br/>
+                    <select class="field" id="expcategory" name="expcategory">
+                        <option value="">select</option>
+                        <option value="Essentials">Essentials</option>
+                        <option value="Debt payments">Debt payments</option>
+                        <option value="Maintenance">Maintenance</option>
+                        <option value="Lifestyle">Lifestyle</option>
+                        <option value="For fun">For fun</option>
+                        <option value="Miscellaneous">Miscellaneous</option>
+                    </select>
+                    <br/>
+                    Remarks (optional)
+                    <br/>
+                    <textarea class="field" id="expremarks"></textarea>
+                    <br/>
+                    <button class="button" id="expsubmit">Submit</button>
+                    <br/>
+                    <a class="expclose">Close</a>
+                </div>
+                <div class="confirm"></div>
+                <div class="loading"></div>
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/dashboard.js"></script>
+    </body>
+</html>

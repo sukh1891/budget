@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.naracl.crm" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>kTech My Budget</name>
+    <description>
+        My Budget is a personal budget management system by Khurana Technologies. The online tool allows you to keep track of all your income sources as well as expenses throughout the month and gives you a detailed analysis that lets you manage your money more effectively.
+    </description>
+    <author email="budget@khuranatech.in" href="http://budget.khuranatech.in">
+        Khurana Technologies
+    </author>
+    <content src="index.html" />
+    <preference name="orientation" value="portrait"/>
+    <preference name="fullscreen" value="false"/>
+    <preference name="target-device" value="universal"/>
+    <preference name="webviewbounce" value="true"/>
+    <preference name="prerendered-icon" value="true"/>
+    <preference name="stay-in-webview" value="false"/>
+    <preference name="show-splash-screen-spinner" value="false"/>
+    <preference name="detect-data-types" value="true"/>
+    <preference name="exit-on-suspend" value="false"/>
+    <preference name="auto-hide-splash-screen" value="true"/>
+    <preference name="disable-cursor" value="false"/>
+    <preference name="android-minSdkVersion" value="14"/>
+    <preference name="android-installLocation" value="auto"/>
+    <plugin name="cordova-plugin-device-orientation" />
+    <plugin name="cordova-plugin-network-information" />
+    <plugin name="cordova-plugin-splashscreen" />
+    <plugin name="cordova-plugin-device" />
+    <plugin name="cordova-plugin-websql" />
+    <icon src="www/img/icon.png"/>
+    <gap:splash src="www/img/app-splash.png"/>
+    <access origin="*" />
+    <plugin name="cordova-plugin-whitelist" version="1"/>
+    <allow-intent href="http://*/*"/>
+    <allow-intent href="https://*/*"/>
+    <platform name="android">
+        <allow-intent href="market:*"/>
+    </platform>
+</widget>
