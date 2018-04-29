@@ -223,7 +223,7 @@ h3 input {
     box-sizing: border-box;
 }
 
-.income, .expenses, .analytics {
+.income, .expenses, .analytics, .refer {
     display: none;
 }
 
@@ -399,4 +399,48 @@ a.conclose {
     padding: 5px;
     font-size: 15px;
     box-sizing: border-box;
+}
+
+.refer p {
+    padding: 0 10px;
+    text-align: justify;
+}
+
+.refurl {
+    text-align: center;
+    margin: 10px;
+}
+
+.refurl input {
+    display: block;
+    padding: 5px;
+    box-shadow: 0 0 0 2px #e56100;
+    border: none;
+    width: calc(100% - 10px);
+}
+
+.refurl a {
+    color: #e56100;
+    margin: 10px;
+    padding: 10px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.sharing {
+    text-align: center;
+}
+
+.sharing a {
+    padding: 10px 0;
+    width: 50px;
+    display: inline-block;
+    margin: 0 3px;
+    background: #e56100;
+    text-align: center;
+    font-size: 20px;
+}
+
+.sharing a i {
+    color: #fff;
 }

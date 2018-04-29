@@ -4,8 +4,6 @@
         require('../includes/connect.php');
         $email = mysql_real_escape_string(htmlspecialchars(trim($_POST['email'])));
         $password = mysql_real_escape_string(htmlspecialchars(trim($_POST['password'])));
-        $month = mysql_real_escape_string(htmlspecialchars(trim($_POST['month'])));
-        $year = mysql_real_escape_string(htmlspecialchars(trim($_POST['year'])));
         $newchar = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*';
         $characters = 'BWEu3JOxDAFYMH1mzew!V^$7GrRjCqnQ@lig&KoI465skd0Lah9fT2btPcX%U8#vp*SNZy';
         $l = strlen($password);
@@ -25,11 +23,32 @@
         $password = hash('sha512', $password);
         $data = array();
         if($password == $passwordc && $verified == "1") {
-            $q = mysql_query("SELECT * FROM k2mb_xaction WHERE type = 'expenses' AND userid = '$id' AND MONTH(date) = '$month' AND YEAR(date) = '$year' ORDER BY date DESC");
-            while($row = mysql_fetch_object($q)) {
-                $data[] = $row;
+            $construct = "SELECT * FROM k2mb_refer WHERE userid = '$id'";
+            $run = mysql_query($construct);
+            if(mysql_num_rows($run) == 0) {
+                function refcode() {
+                    $charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                    $key = "";
+                    for($i=0; $i<6; $i++) {
+                        $key .= $charset[(mt_rand(0,(strlen($charset)-1)))]; 
+                    }
+                    $construct = "SELECT * FROM k2mb_refer WHERE code = '$key'";
+                    $run = mysql_query($construct);
+                    if(mysql_num_rows($run) == 0) {
+                        return $key;
+                    } else {
+                        refcode();
+                    }
+                }
+                $code = refcode();
+                $construct = "INSERT INTO k2mb_refer (userid, code) VALUES ('$id', '$code')";
+                $run = mysql_query($construct);
+                $construct = "SELECT * FROM k2mb_refer WHERE userid = '$id'";
+                $run = mysql_query($construct);
             }
-            echo json_encode($data);
+            $runrows = mysql_fetch_assoc($run);
+            $code = $runrows['code'];
+            echo $code;
         } else {
             echo "failed";
         }

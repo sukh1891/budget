@@ -1,6 +1,7 @@
 function dashboard() {
     $(".index").addClass("hide");
     $(".cpanel").addClass("show");
+    password = $("#password").val();
     dataString = "email=" + email + "&password=" + password + "&login=";
     url="https://khuranatech.in/pro/budget/app/dashboard.php";
     if($.trim(email).length>0 & $.trim(password).length>0) {
@@ -11,7 +12,7 @@ function dashboard() {
             dataType: "json",
             crossDomain: true,
             cache: false,
-            beforeSend: function(){ $("#last5").html('loading'); },
+            beforeSend: function(){ $("#last5").html('loading...'); },
             success: function(data){
                 if(data == "failed") {
                     alert("Unknown error. Try again.");
@@ -49,6 +50,7 @@ function income() {
         }
         year = d.getFullYear();
     }
+    password = $("#password").val();
     dataString = "email=" + email + "&password=" + password + "&month=" + month + "&year=" + year + "&login=";
     url="https://khuranatech.in/pro/budget/app/income.php";
     if($.trim(email).length>0 & $.trim(password).length>0) {
@@ -92,6 +94,7 @@ function expenses() {
         }
         year = d.getFullYear();
     }
+    password = $("#password").val();
     dataString = "email=" + email + "&password=" + password + "&month=" + month + "&year=" + year + "&login=";
     url="https://khuranatech.in/pro/budget/app/expenses.php";
     if($.trim(email).length>0 & $.trim(password).length>0) {
@@ -127,6 +130,7 @@ function expenses() {
     }return false;
 }
 function analytics() {
+    password = $("#password").val();
     dataString = "email=" + email + "&password=" + password + "&login=";
     url="https://khuranatech.in/pro/budget/app/analytics.php";
     if($.trim(email).length>0 & $.trim(password).length>0) {
@@ -169,6 +173,30 @@ function analytics() {
                         $(".sav2").html(sav2);
                         $(".sav3").html(sav3);
                     });
+                }
+            }
+        });
+    }return false;
+}
+function refer() {
+    password = $("#password").val();
+    dataString = "email=" + email + "&password=" + password + "&login=";
+    url="https://khuranatech.in/pro/budget/app/refer.php";
+    if($.trim(email).length>0 & $.trim(password).length>0) {
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: dataString,
+            crossDomain: true,
+            cache: false,
+            beforeSend: function(){ $("#refurl").val('loading...'); },
+            success: function(data){
+                if(data == "failed") {
+                    alert("Unknown error. Try again.");
+                    logout();
+                } else {
+                    var refurl = "https://khuranatech.in/pro/budget/?ref=" + data;
+                    $("#refurl").val(refurl);
                 }
             }
         });

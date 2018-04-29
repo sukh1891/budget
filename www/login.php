@@ -22,7 +22,13 @@
         $password = crypt($password, $salt);
         $password = hash('sha512', $password);
         if($password == $passwordc && $verified == "1") {
-            echo $name;
+            $json = array();
+            $json[]= array(
+                'name' => $name,
+                'login' => 'success',
+            );
+            $jsonstring = json_encode($json);
+            echo $jsonstring;
         } else {
             echo "failed";
         }

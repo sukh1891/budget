@@ -26,7 +26,7 @@
         $data = array();
         if($password == $passwordc && $verified == "1") {
             $q = mysql_query("SELECT * FROM k2mb_xaction WHERE type = 'expenses' AND userid = '$id' AND MONTH(date) = '$month' AND YEAR(date) = '$year' ORDER BY date DESC");
-            while ($row = mysql_fetch_object($q)){
+            while($row = mysql_fetch_object($q)) {
                 $data[] = $row;
             }
             echo json_encode($data);

@@ -5,6 +5,7 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <title>Login</title>
         <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <link href="css/font-awesome.css" rel="stylesheet" type="text/css"/>
     </head>
     <body onload="onLoad();">
         <div class="index">
@@ -33,6 +34,7 @@
                 <a class="inclink">Income</a>
                 <a class="explink">Expenses</a>
                 <a class="analink">Analytics</a>
+                <a class="reflink">Invite & earn</a>
                 <a class="logout">Logout</a>
                 <a href="https://khuranatech.in/">About kTech</a>
             </div>
@@ -154,6 +156,22 @@
                             <div class="sav2 aninc"></div>
                             <div class="sav3 aninc"></div>
                         </div>
+                    </div>
+                </div>
+                <div class="refer contdiv">
+                    <h3>Invite & earn</h3>
+                    <p>
+                        Share your referral link with your friends and get <i>Paytm cash (&#8377;20)</i> for every friend who registers using your link.
+                    </p>
+                    <div class="refurl">
+                        <input type="text" id="refurl" value="" readonly/>
+                        <a onclick="copyurl();">Copy Link</a>
+                    </div>
+                    <div class="sharing">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $refurl; ?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://twitter.com/intent/tweet?text=<?php echo urlencode($refurl); ?>" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="mailto:?body=<?php echo urlencode($refurl); ?>" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                        <a href="whatsapp://send?text=<?php echo urlencode($refurl); ?>" data-action="share/whatsapp/share"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="newinc newform">
