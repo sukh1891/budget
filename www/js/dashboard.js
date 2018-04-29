@@ -197,6 +197,14 @@ function refer() {
                 } else {
                     var refurl = "https://khuranatech.in/pro/budget/?ref=" + data;
                     $("#refurl").val(refurl);
+                    var fburl = "https://www.facebook.com/sharer/sharer.php?u=" + refurl;
+                    var twurl = "https://twitter.com/intent/tweet?text=" + refurl;
+                    var emurl = "mailto:?body=" + refurl;
+                    var whurl = "whatsapp://send?text=" + refurl;
+                    $("#shfb").attr("href", fburl);
+                    $("#shtw").attr("href", twurl);
+                    $("#shem").attr("href", emurl);
+                    $("#shwh").attr("href", whurl);
                 }
             }
         });
